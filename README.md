@@ -10,6 +10,20 @@ export WINUX_LANG=zh-CN
 winuxcmd ls --help
 ```
 
+To make the language selection persistent for future Windows processes, use
+the built-in Windows `setx.exe` command:
+
+```cmd
+setx WINUX_LANG zh-CN
+```
+
+Open a new terminal after running `setx`; existing processes keep their current
+environment. To disable catalog loading persistently, run:
+
+```cmd
+setx WINUX_LANG off
+```
+
 Catalogs are installed below `.wpm/i18n/<locale>/catalog.json`. Missing keys
 fall back to the English text compiled into WinuxCmd.
 
