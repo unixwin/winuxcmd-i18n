@@ -156,6 +156,7 @@
     "command.chmod.option.verbose": "为处理的每个文件输出诊断信息",
     "command.chmod.synopsis": "更改文件模式位",
     "command.chown.description": "更改每个 FILE 的所有者和/或组。\n\n注意：在 Windows 上，chown 的功能受限。在没有管理员权限时，\n该命令只能报告当前状态。更改所有权需要提升的权限。",
+    "command.chown.error.unsupported_ownership": "chown：Windows 上不支持更改所有权",
     "command.chown.option.H": "遍历命令行中的目录符号链接",
     "command.chown.option.L": "遍历指向目录的每个符号链接",
     "command.chown.option.P": "不遍历任何符号链接",
