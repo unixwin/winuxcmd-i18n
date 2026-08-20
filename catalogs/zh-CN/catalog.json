@@ -338,6 +338,7 @@
     "command.date.option.iso-8601": "输出 ISO 8601 日期/时间",
     "command.date.option.rfc-2822": "输出符合 RFC 2822 的日期字符串",
     "command.date.option.rfc-3339": "输出 RFC 3339 日期/时间",
+    "command.date.option.reference": "显示 FILE 的最后修改时间",
     "command.date.option.rfc-email": "输出符合 RFC 5322 的日期字符串",
     "command.date.option.universal": "--utc 的别名",
     "command.date.option.utc": "协调世界时 (UTC)",
