@@ -2978,6 +2978,7 @@
     "command.time_cmd.synopsis": "time [OPTION]... COMMAND [ARG]...",
     "command.xxd.option.include": "以 C include 文件格式输出",
     "command.xxd.option.name": "为 C include 输出指定变量名",
+    "command.xxd.option.len": "将输入限制为 LEN 个字节",
     "legacy.0b638b9454a4fa5c": "diff：上下文长度无效",
     "legacy.24d1d5a52ccd8e7a": "尝试使用 'diff --help' 获取更多信息。",
     "legacy.450147c77b398d37": "find：无法打开目录",
