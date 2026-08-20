@@ -1692,7 +1692,7 @@
     "command.tic.option.v": "设置详细程度级别",
     "command.tic.option.x": "将未知功能视为用户定义功能",
     "command.tic.synopsis": "tic [-e names] [-o dir] [-R name] [-v[n]] [-V] [-w[n]] [-1aCDcfGgIKLNrsTtUx] source-file",
-    "command.timeout.description": "启动 COMMAND，如果在 DURATION 后仍在运行则终止它。\n\n长选项的必需参数对于短选项同样是必需的。\n\nDURATION 是一个浮点数，可带有可选后缀：\n's' 表示秒（默认），'m' 表示分钟，'h' 表示小时，或 'd' 表示天。\n\n注意：这是一个简化实现。它实际上不会\n执行命令。提供它仅用于 API 兼容性。\n完整实现需要在 Windows 上进行进程管理。",
+    "command.timeout.description": "启动 COMMAND，如果在 DURATION 后仍在运行则终止它。\n\n长选项的必需参数对于短选项同样是必需的。\n\nDURATION 是一个浮点数，可带有可选后缀：\n's' 表示秒（默认），'m' 表示分钟，'h' 表示小时，或 'd' 表示天。\n\nCOMMAND 会作为子进程执行，并在时间限制到期时终止。Windows 使用进程终止和 Job Object 近似 POSIX 信号控制。",
     "command.timeout.option.foreground": "不直接从 shell 提示符运行 timeout 时",
     "command.timeout.option.kill-after": "如果 COMMAND 仍在运行，则同时发送 KILL 信号",
     "command.timeout.option.preserve-status": "以与 COMMAND 相同的状态退出",
