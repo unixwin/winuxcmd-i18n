@@ -1932,6 +1932,7 @@
     "command.wpm.status.links_removed": "wpm：已删除链接={} 失败={}",
     "command.wpm.status.links_summary": "wpm：已创建链接={} 未更改={} 已删除过期链接={} 失败={}",
     "command.wpm.status.shims_created": "wpm：已创建 {} 个 shim（未更改 {}），'{}' 的载荷位于 opt/{}",
+    "command.wpm.status.shim_migrated": "wpm：已为 '{}' 清理 usr/bin 中 {} 个过期的平铺文件",
     "command.wpm.status.shims_dry_run": "wpm：试运行：将为 '{}' 在 usr/bin 中创建 {} 个命令 shim",
     "command.wpm.error.shim_create": "wpm：创建 shim '{}' 失败：{}",
     "command.wpm.error.shim_template": "wpm：未找到 '{}'，未创建 shim",
