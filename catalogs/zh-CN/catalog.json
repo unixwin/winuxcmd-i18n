@@ -2835,7 +2835,6 @@
     "legacy.53dee4697aac2298": " -onlret",
     "legacy.542bcb7ad5085e2c": "选项 -i 和 --output 互斥",
     "legacy.546035969cc9f734": "摘要长度无效",
-    "legacy.546c92901044e20c": "CRC32 (",
     "legacy.54855714863722d7": "无效的组地址",
     "legacy.54f345ceae4fa5b0": "less：缺少文件名或管道输入",
     "legacy.55780b0db690f562": "-：错误的文件描述符",
@@ -3563,7 +3562,14 @@
     "utils.file.error.read_stdin_bad_fd": "读取 'standard input' 时出错：错误的文件描述符",
     "utils.pager.controls": "  SPACE/f：下一页  j/k：行  b：返回  /：搜索  n/N  g/G  q",
     "utils.pager.end": "（结束） ",
-    "utils.pager.lines": "行 "
+    "utils.pager.lines": "行 ",
+    "legacy.2864c2d35a33a31d": "，位于字节 ",
+    "legacy.2f0c25957c50712b": " <==\n",
+    "legacy.480bd10045b0d4b9": "（文件为空）",
+    "legacy.5998255456e881b4": "，行 ",
+    "legacy.6aa04c0a638dc579": "分隔符为空",
+    "legacy.7b38f9815942a901": "--backup 与 -n 或 --update=none-fail 互斥",
+    "legacy.cf2a7b148cd2b585": "分隔符不能为空"
   },
   "schema": 1
 }
