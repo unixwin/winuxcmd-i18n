@@ -2291,6 +2291,7 @@
     "command.wpm.status.links_summary": "wpm：已创建链接={} 未更改={} 已删除过期链接={} 失败={}",
     "command.wpm.status.outdated_none": "wpm：所有已安装的软件包均为最新",
     "command.wpm.status.prefer_regional_sources": "wpm：全球索引源不可达，优先尝试区域镜像",
+    "command.wpm.status.preferred_fallback": "wpm：首选源 '{}' 失败，正在尝试其他源（运行 'wpm source use auto' 可恢复自动选择）",
     "command.wpm.status.region_set": "wpm：区域已设置为 {}",
     "command.wpm.status.remove": "删除 {}",
     "command.wpm.status.remove_legacy": "删除旧版链接 {}",
