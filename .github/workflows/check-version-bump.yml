@@ -1,0 +1,52 @@
+name: Version bump guard
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "catalogs/**"
+
+permissions:
+  contents: read
+
+jobs:
+  require-bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Fetch base branch
+        run: git fetch origin "${{ github.base_ref }}" --depth 1
+
+      - name: Require VERSION bump when catalogs change
+        run: |
+          set -euo pipefail
+          base_ref="${{ github.base_ref }}"
+          base_version="$(git show "origin/${base_ref}:VERSION" 2>/dev/null || true)"
+          head_version="$(tr -d '[:space:]' < VERSION 2>/dev/null || true)"
+
+          if [ -z "$head_version" ]; then
+            echo "::error::catalogs/ changed but the VERSION file is missing. Add VERSION and set the next release version."
+            exit 1
+          fi
+
+          if [ -z "$base_version" ]; then
+            echo "VERSION is new on this branch; treating as a bump to ${head_version}."
+            exit 0
+          fi
+
+          if [ "$head_version" = "$base_version" ]; then
+            next_patch="$(python3 -c "import sys; v='${base_version}'.split('.'); v[-1]=str(int(v[-1])+1); print('.'.join(v))")"
+            echo "::error::catalogs/ changed but VERSION stayed at ${base_version}. Bump VERSION (for example to ${next_patch}) so WPM users receive the update; versions only move forward."
+            exit 1
+          fi
+
+          lowest="$(printf '%s\n%s\n' "$base_version" "$head_version" | sort -V | head -n1)"
+          if [ "$lowest" = "$head_version" ] && [ "$head_version" != "$base_version" ]; then
+            echo "::error::VERSION moved backwards (${base_version} -> ${head_version}). Versions must only increase."
+            exit 1
+          fi
+
+          echo "VERSION bumped: ${base_version} -> ${head_version}"

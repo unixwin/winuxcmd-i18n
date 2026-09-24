@@ -1,0 +1,115 @@
+name: Release catalog
+
+# Runs on every push to main that touches VERSION or catalogs/. When VERSION
+# points at a tag that does not exist yet, the job tags it, publishes the WPM
+# zip as a GitHub release, and opens an automated PR on unixwin/wpm-source to
+# refresh the winuxcmd-i18n-zh-cn index entry (version, URL, SHA-256, size).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "VERSION"
+      - "catalogs/**"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+env:
+  PACKAGE: winuxcmd-i18n-zh-cn
+  WPM_SOURCE_TOKEN: ${{ secrets.WPM_SOURCE_TOKEN }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Read VERSION
+        id: ver
+        run: echo "version=$(tr -d '[:space:]' < VERSION)" >> "$GITHUB_OUTPUT"
+
+      - name: Skip if tag already exists
+        id: tag
+        env:
+          VERSION: ${{ steps.ver.outputs.version }}
+        run: |
+          if git ls-remote --tags origin "refs/tags/v${VERSION}" | grep -q .; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "tag v${VERSION} already exists; nothing to release"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "new release: v${VERSION}"
+          fi
+
+      - name: Package zh-CN catalog
+        if: steps.tag.outputs.exists == 'false'
+        env:
+          VERSION: ${{ steps.ver.outputs.version }}
+        run: |
+          python3 - "$VERSION" <<'PY'
+          import sys
+          import zipfile
+          version = sys.argv[1]
+          name = f"winuxcmd-i18n-zh-cn.zip"
+          with zipfile.ZipFile(name, "w", zipfile.ZIP_DEFLATED) as z:
+              z.write("catalogs/zh-CN/catalog.json", "zh-CN/catalog.json")
+          print(f"packaged {name} for v{version}")
+          PY
+          sha256sum winuxcmd-i18n-zh-cn.zip
+
+      - name: Create GitHub Release
+        if: steps.tag.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.ver.outputs.version }}
+        run: |
+          gh release create "v${VERSION}" winuxcmd-i18n-zh-cn.zip \
+            --title "winuxcmd-i18n v${VERSION}" \
+            --generate-notes
+
+      - name: Checkout WPM source
+        if: steps.tag.outputs.exists == 'false' && env.WPM_SOURCE_TOKEN != ''
+        uses: actions/checkout@v6
+        with:
+          repository: unixwin/wpm-source
+          token: ${{ secrets.WPM_SOURCE_TOKEN }}
+          path: wpm-source
+          fetch-depth: 1
+
+      - name: Update index entry and open PR
+        if: steps.tag.outputs.exists == 'false' && env.WPM_SOURCE_TOKEN != ''
+        working-directory: wpm-source
+        env:
+          GH_TOKEN: ${{ secrets.WPM_SOURCE_TOKEN }}
+          VERSION: ${{ steps.ver.outputs.version }}
+        run: |
+          url="https://github.com/unixwin/winuxcmd-i18n/releases/download/v${VERSION}/${PACKAGE}.zip"
+          branch="automation/i18n-zh-cn-v${VERSION}"
+          git config user.name "winuxcmd-i18n-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout -B "$branch"
+          pwsh ./scripts/update-package.ps1 \
+            -Package "$PACKAGE" \
+            -Version "$VERSION" \
+            -Platform windows-x64 \
+            -Type zip \
+            -Url "$url" \
+            -From zh-CN/catalog.json \
+            -To .wpm/i18n/zh-CN/catalog.json
+          pwsh ./scripts/validate-index.ps1
+          git add index.json
+          git commit -m "wpm: promote ${PACKAGE} ${VERSION}"
+          git push --force-with-lease origin "$branch"
+          pr_url="$(gh pr list --head "$branch" --state open --json url --jq '.[0].url')"
+          if [ -z "$pr_url" ]; then
+            gh pr create --head "$branch" \
+              --title "wpm: promote ${PACKAGE} ${VERSION}" \
+              --body "Automated index update for the winuxcmd-i18n release v${VERSION}."
+          fi
+
+      - name: Warn when WPM source token is missing
+        if: steps.tag.outputs.exists == 'false' && env.WPM_SOURCE_TOKEN == ''
+        run: |
+          echo "::warning::WPM_SOURCE_TOKEN is not configured; the winuxcmd-i18n-zh-cn index entry was NOT updated. Update unixwin/wpm-source manually or configure the secret."
