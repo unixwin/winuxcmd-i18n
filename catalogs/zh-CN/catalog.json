@@ -2836,6 +2836,7 @@
     "legacy.4a5789feafd18e19": "mkdir：无法创建目录 '",
     "legacy.4a8c4d147b90536c": "'：没有那个文件或目录\n",
     "legacy.4b1e4d2fdbc79d0d": "tail：警告：已忽略 PID；仅在跟随时 --pid=PID 才有用\n",
+    "legacy.4b67565df2784a0a": "tput：未设置 $TERM 且未指定 -T",
     "legacy.4bcae0f1b14575f0": "file: Windows 上文件类型检测基于文件扩展名\n",
     "legacy.4c390cb6ab6b6b9f": " 空闲： ",
     "legacy.4c483b193dc3cae0": "上移 ",
