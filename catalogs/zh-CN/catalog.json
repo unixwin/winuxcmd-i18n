@@ -2340,7 +2340,7 @@
     "command.wpm.status.index_updated": "wpm：索引已更新，来源：{}",
     "command.wpm.status.install_dry_run": "wpm：试运行完成；将安装 {}",
     "command.wpm.status.install_summary": "wpm：安装汇总：请求={} 失败={}",
-    "command.wpm.status.installed": "wpm：已安装 {}",
+    "command.wpm.status.installed": "wpm：已安装 {} {} -> {}",
     "command.wpm.status.installing_files": "wpm：正在安装文件...",
     "command.wpm.status.keep_running": "wpm：保留正在运行的可执行文件：{}",
     "command.wpm.status.link": "链接 {} -> {}",
