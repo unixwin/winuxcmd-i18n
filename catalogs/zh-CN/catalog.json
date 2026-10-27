@@ -3433,7 +3433,6 @@
     "legacy.dd2d056c170050ca": "请尝试使用 'numfmt --help' 获取更多信息。",
     "legacy.dd82dc4b07ed9e30": "wc：-：错误的文件描述符\n",
     "legacy.ddc95d7ebee615b3": "  空格：下一个  b：后退  /：搜索  :n/:p  g/G  q",
-    "legacy.ddfecb281f85ed1a": "无法读取符号链接目标",
     "legacy.de50101201188200": "set2 后存在多余操作数",
     "legacy.de5e5b849cf5ba1d": "字节数无效",
     "legacy.de95da5559fba5f6": "rmdir：缺少操作数",
