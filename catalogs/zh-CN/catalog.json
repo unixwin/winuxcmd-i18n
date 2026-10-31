@@ -3598,7 +3598,6 @@
     "legacy.8c4fbd07a27a8133": "  - 'wipe'",
     "legacy.95b3d88d57848ddc": "安装目录时不能使用 strip 选项",
     "legacy.97a6fd0a5e37ad26": "  - 'wipesync'",
-    "legacy.99ac8669b914c8cd": "不能同时汇总并显示所有条目",
     "legacy.a2b34c47ca98f9cb": "ln：指定了多个目标目录\n",
     "legacy.a82e9c6eb233d0ee": "df：'",
     "legacy.c0f5827a8a4200ac": "install：无法为 ' 设置时间戳",
