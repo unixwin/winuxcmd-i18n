@@ -1616,6 +1616,7 @@
     "command.patch.option.verbose": "输出详细信息",
     "command.patch.option.version-control": "对备份文件名称使用 STYLE",
     "command.patch.synopsis": "patch [OPTION]... [ORIGFILE [PATCHFILE]]",
+    "command.patch.warning.ignoring_dangerous_name": "忽略可能存在危险的文件名 {}",
     "command.pathchk.description": "检查文件名是否有效或可移植。\n检查每个文件名对于当前文件系统是否有效，\n并可选择检查 POSIX 可移植性。",
     "command.pathchk.option.P": "检查空名称和以 \"-\" 开头的名称",
     "command.pathchk.option.p": "检查大多数 POSIX 系统（POSIX 路径长度、名称长度和字符集）",
