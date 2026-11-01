@@ -1242,7 +1242,7 @@
     "command.logger.option.size": "单条消息的最大长度",
     "command.logger.option.skip-empty": "处理文件时不记录空行",
     "command.logger.option.socket": "写入此 UNIX 套接字而不是系统日志",
-    "command.logger.option.socket-errors": "何时报告套接字错误：on、off、auto",
+    "command.logger.option.socket-errors": "使用 UNIX 套接字时打印连接错误",
     "command.logger.option.stderr": "同时将消息写入标准错误",
     "command.logger.option.tag": "使用此标签标记每一行",
     "command.logger.option.tcp": "仅使用 TCP",
