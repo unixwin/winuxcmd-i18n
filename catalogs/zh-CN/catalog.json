@@ -577,7 +577,6 @@
     "command.echo.option.E": "禁止反斜杠转义",
     "command.echo.option.e": "启用反斜杠转义",
     "command.echo.option.n": "不追加换行符",
-    "command.echo.option.repeat": "重复输出 N 次",
     "command.echo.option.upper": "将文本转换为大写",
     "command.echo.synopsis": "echo [-neE] [arg ...]",
     "command.egrep.description": "使用扩展正则表达式在每个 FILE 中搜索 PATTERNS。\n此兼容入口等同于 grep -E。",
