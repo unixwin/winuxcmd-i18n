@@ -64,6 +64,7 @@
     "command.cal.option.year": "显示整年",
     "command.cal.synopsis": "cal [OPTION] [[MONTH] YEAR]",
     "command.cat.description": "将文件(FILE)连接到标准输出。\n没有文件(FILE)时，或当文件(FILE)为 - 时，读取标准输入。\n\n示例：\n  cat f g  输出 f 的内容，然后输出 g 的内容。\n  cat      将标准输入复制到标准输出。",
+    "command.cat.error.is_a_directory": "cat: {}：是一个目录",
     "command.cat.synopsis": "连接文件并输出到标准输出",
     "command.chattr.description": "更改 Windows 文件属性。\n支持的标志为 R、H、S、A、I、T、O，分别表示只读、隐藏、系统、存档、未索引、临时和脱机。\n[DIFFERS] 属性标志与 GNU chattr（Linux ext4）不同。",
     "command.chattr.option.force": "抑制大多数错误消息",
