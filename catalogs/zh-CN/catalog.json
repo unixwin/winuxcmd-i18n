@@ -4207,7 +4207,8 @@
     "command.unexpand.error.tab_repeat_not_last": "'{specifier}' specifier only allowed with the last value",
     "command.unexpand.error.tab_specifier_not_start": "'{specifier}' specifier not at start of number: '{text}'",
     "command.unexpand.error.tab_too_large": "tab stop is too large '{text}'",
-    "command.unexpand.error.tab_zero": "tab size cannot be 0"
+    "command.unexpand.error.tab_zero": "tab size cannot be 0",
+    "legacy.5e39d20786d6e290": "tty: write error: Broken pipe"
   },
   "schema": 1
 }
