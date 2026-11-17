@@ -1415,7 +1415,7 @@
     "command.ls.error.columns_width": "忽略环境变量 COLUMNS 中的无效宽度：‘{value}’",
     "command.ls.error.dired_zero": "--dired 与 --zero 不兼容",
     "command.ls.error.invalid_argument": "参数 '{value}' 对 '{option}' 无效",
-    "command.ls.error.invalid_line_width": "无效的行宽 ‘{value}’",
+    "command.ls.error.invalid_line_width": "无效的行宽：‘{value}’",
     "command.ls.error.invalid_option": "无效选项 -- '{opt}'",
     "command.ls.error.invalid_tab_size": "无效的制表位大小：'{value}'",
     "command.ls.error.invalid_time_style_format": "无效的时间样式格式 '{value}'",
